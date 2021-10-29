@@ -2,17 +2,54 @@
 var generatePassword = function() {
 
     var passLength = null;
+    var passLowercase = false;
+    var passUppercase = false;
+    var passNumbers = false;
+    var passSpecialCharacters = false;
+    var characters = "";
 
-    //ensure password is between 8 and 128 characters
+    // ensure password is between 8 and 128 characters
     while (Number(passLength) < 8 || Number(passLength) > 128 || Number(passLength) === null || isNaN(passLength)) {
-      passLength = prompt("Please pick a password length between 8 and 128 characters");
+      passLength = prompt("Please pick a password length between 8 and 128 characters.");
     }
 
-    var passLowercase = confirm("Include lowercase letters?");
-    var passUppercase = confirm("Include uppercase letters?");
-    var passNumbers = confirm("Include numbers?");
-    var passSpecialCharacters = confirm("Include special characters?");
-}
+    // ask user which characters they want to include
+    function chooseCharacters() {
+      passLowercase = confirm("Include lowercase letters?");
+      passUppercase = confirm("Include uppercase letters?");
+      passNumbers = confirm("Include numbers?");
+      passSpecialCharacters = confirm("Include special characters?");
+    }
+
+    chooseCharacters();
+
+    // make sure at least one character type is selected
+    if (!passLowercase && !passUppercase && !passNumbers && !passSpecialCharacters) {
+      alert("Please pick at least one character type.");
+      chooseCharacters();
+    }
+
+    // create string from which to choose random characters
+    if (passLowercase) {
+      characters = characters + "abcdefghijklmnopqrstuvwxyz";
+    }
+
+    if (passUppercase) {
+      characters = characters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
+
+    if (passNumbers) {
+      characters = characters + "1234567890";
+    }
+
+    if (passSpecialCharacters) {
+      characters = characters + " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+      characters = characters + '"';
+    }
+
+    
+
+};
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
