@@ -7,6 +7,7 @@ var generatePassword = function() {
     var passNumbers = false;
     var passSpecialCharacters = false;
     var characters = "";
+    var result = "";
 
     // ensure password is between 8 and 128 characters
     while (Number(passLength) < 8 || Number(passLength) > 128 || Number(passLength) === null || isNaN(passLength)) {
@@ -47,7 +48,10 @@ var generatePassword = function() {
       characters = characters + '"';
     }
 
-    
+    for (var i = 0; i < passLength; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
 
 };
 
