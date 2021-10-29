@@ -1,5 +1,18 @@
 // Assignment code here
+var generatePassword = function() {
 
+    var passLength = null;
+
+    //ensure password is between 8 and 128 characters
+    while (Number(passLength) < 8 || Number(passLength) > 128 || Number(passLength) === null || isNaN(passLength)) {
+      passLength = prompt("Please pick a password length between 8 and 128 characters");
+    }
+
+    var passLowercase = confirm("Include lowercase letters?");
+    var passUppercase = confirm("Include uppercase letters?");
+    var passNumbers = confirm("Include numbers?");
+    var passSpecialCharacters = confirm("Include special characters?");
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
