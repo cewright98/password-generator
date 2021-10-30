@@ -8,7 +8,7 @@ A website that generates a password based on user input defining password length
 * Lowercase letters
 * Uppercase letters
 * Numbers
-* Special Characters
+* Special characters
 
 ## Built with
 * HTML
